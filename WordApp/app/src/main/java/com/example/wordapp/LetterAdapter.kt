@@ -12,16 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 
 class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
 
-//    initializing a list of words from A to Z
+//  initializing a list of words from A to Z
     private val list = ('A').rangeTo('Z').toList()
 
 
-//    initializing class for the LetterViewHolder
+//  initializing class for the LetterViewHolder
     class LetterViewHolder(val view: View): RecyclerView.ViewHolder(view){
         val button = view.findViewById<Button>(R.id.button_view)
     }
 
-//    creating the ViewHolder for the item_view layout
+
+//  creating the ViewHolder for the item_view layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LetterViewHolder {
         val layout = LayoutInflater
             .from(parent.context)
@@ -31,36 +32,34 @@ class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
         return LetterViewHolder(layout)
     }
 
+
+//  Getting the size of list
     override fun getItemCount(): Int {
         return list.size
     }
 
-//    Replace the content on the View Holder with new Data
+
+//  Replace the content on the View Holder with new Data
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
         val item = list.get(position)
         holder.button.text = item.toString()
 
-//        creating an setOnClickListener for the button to enable it to move to a different activity
 
+//      creating an setOnClickListener for the button to enable it to move to a different activity
         holder.button.setOnClickListener {
-
             val context = holder.view.context
             val intent = Intent(context, DetailActivity::class.java)
 
-            intent.putExtra("letter", holder.button.text.toString())
+            intent.putExtra(DetailActivity.LETTER, holder.button.text.toString())
 
             context.startActivity(intent)
-
         }
-
 
     }
 
-//    defining custom accessibility
 
+//  defining custom accessibility
     companion object Accessibility: View.AccessibilityDelegate(){
-
-
         override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfo) {
             super.onInitializeAccessibilityNodeInfo(host, info)
 
@@ -70,7 +69,6 @@ class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
                 AccessibilityNodeInfo.ACTION_CLICK,
                 customString
             )
-
             info.addAction(customClick)
         }
     }
