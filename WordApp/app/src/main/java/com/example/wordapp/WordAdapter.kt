@@ -1,4 +1,4 @@
-package com.example.wordapp.adapter
+package com.example.wordapp
 
 import android.content.Context
 import android.os.Build
@@ -9,9 +9,9 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wordapp.R
 
-class WordAdapter(private val letterId:String, context: Context): RecyclerView.Adapter<WordAdapter.WordViewHolder>(){
+class WordAdapter(private val letterId:String, context: Context)
+    : RecyclerView.Adapter<WordAdapter.WordViewHolder>(){
 
 //  initializing filteredWords variable for assigning a filtered and shuffled list of words
     private val filteredWords:List<String>
@@ -19,7 +19,7 @@ class WordAdapter(private val letterId:String, context: Context): RecyclerView.A
 //  assigning values for the array of words to the previously initialized filteredWords variable
     init {
 
-        val words = context.resources.getStringArray(R.array.words)
+        val words = context.resources.getStringArray(R.array.words).toList()
 
         filteredWords = words
             .filter { it.startsWith(letterId, ignoreCase = true) }
@@ -31,7 +31,7 @@ class WordAdapter(private val letterId:String, context: Context): RecyclerView.A
 
 
 //  initializing a ViewHolder class and initializing a button variable from the list_view layout
-    class WordViewHolder(val view: View): RecyclerView.ViewHolder(view){
+    class WordViewHolder(val view: View) : RecyclerView.ViewHolder(view){
         val button = view.findViewById<Button>(R.id.button_view)
     }
 
@@ -58,7 +58,7 @@ class WordAdapter(private val letterId:String, context: Context): RecyclerView.A
     }
 
     companion object Accessibility: View.AccessibilityDelegate(){
-        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+
 
         override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfo) {
             super.onInitializeAccessibilityNodeInfo(host, info)

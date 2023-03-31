@@ -1,11 +1,9 @@
 package com.example.wordapp
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.wordapp.adapter.WordAdapter
 import com.example.wordapp.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity(){

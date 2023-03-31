@@ -10,6 +10,6 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
-        android:clipToPadding="false"/>
+        android:clipToPadding="false"
+        android:padding="16dp"/>
 </FrameLayout>

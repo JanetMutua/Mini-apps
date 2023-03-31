@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WordApp"
         tools:targetApi="31">
+        <activity android:name=".DetailActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

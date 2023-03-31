@@ -1,5 +1,6 @@
-package com.example.wordapp.adapter
+package com.example.wordapp
 
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,6 @@ import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.example.wordapp.R
 
 class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
 
@@ -38,14 +38,28 @@ class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
 //    Replace the content on the View Holder with new Data
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
         val item = list.get(position)
-
         holder.button.text = item.toString()
+
+//        creating an setOnClickListener for the button to enable it to move to a different activity
+
+        holder.button.setOnClickListener {
+
+            val context = holder.view.context
+            val intent = Intent(context, DetailActivity::class.java)
+
+            intent.putExtra("letter", holder.button.text.toString())
+
+            context.startActivity(intent)
+
+        }
+
+
     }
 
 //    defining custom accessibility
 
     companion object Accessibility: View.AccessibilityDelegate(){
-        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+
 
         override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfo) {
             super.onInitializeAccessibilityNodeInfo(host, info)
