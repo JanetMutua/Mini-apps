@@ -55,8 +55,11 @@ class WordAdapter(private val letterId:String, context: Context)
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val item = filteredWords[position]
         val context = holder.view.context
-//    setting the text of the WordViewHolder
+//      setting the text of the WordViewHolder
         holder.button.text = item
+
+
+//      setting an explicit intent when a button is clicked
         holder.button.setOnClickListener {
             val queryUrl:Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
             val intent = Intent(Intent.ACTION_SEARCH, queryUrl)

@@ -12,11 +12,11 @@ import androidx.recyclerview.widget.RecyclerView
 
 class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
 
-//  initializing a list of words from A to Z
+//  initializing the app's data that is: a list of words from A to Z
     private val list = ('A').rangeTo('Z').toList()
 
 
-//  initializing class for the LetterViewHolder
+//  initializing class for the LetterViewHolder(gives a reference to the button view
     class LetterViewHolder(val view: View): RecyclerView.ViewHolder(view){
         val button = view.findViewById<Button>(R.id.button_view)
     }
@@ -45,7 +45,7 @@ class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
         holder.button.text = item.toString()
 
 
-//      creating an setOnClickListener for the button to enable it to move to a different activity
+//      creating a setOnClickListener for the button to enable it to move to a different activity
         holder.button.setOnClickListener {
             val context = holder.view.context
             val intent = Intent(context, DetailActivity::class.java)

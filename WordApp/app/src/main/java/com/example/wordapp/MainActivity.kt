@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
         layoutToggle()
     }
 
-
+//  setting up the menu on the action button
     private var isLinearLayout = true
 
-//  creating a function that toggles the layout based on current state
+//  creating a function that toggles the layout into grid or list view based on current state
     private fun layoutToggle(){
 
         if (isLinearLayout){
@@ -57,8 +57,8 @@ class MainActivity : AppCompatActivity() {
 //  inflating the options menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.layout_menu, menu)
-        val layoutButton = menu?.findItem(R.id.action_switch_layout)
-        setIcon(layoutButton)
+        val menuItem = menu?.findItem(R.id.action_switch_layout)
+        setIcon(menuItem)
         return true
     }
 
