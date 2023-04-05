@@ -34,12 +34,23 @@ class WordListFragment : Fragment() {
 
     }
     private lateinit var recyclerView: RecyclerView
+    private lateinit var letterId: String
+
+    //accessing arguements set in the Navigation graph by overriding the onCreate method:
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            letterId = it.getString(LETTER).toString()
+        }
+    }
+
+
     //performing view binding and setup
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //fragments don't have intent property hence use activity?.intent?
-        val letterId = activity?.intent?.extras?.getString(LETTER).toString()
-
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = WordAdapter(letterId , requireContext())
