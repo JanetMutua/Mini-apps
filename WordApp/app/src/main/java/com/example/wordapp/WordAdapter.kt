@@ -61,7 +61,7 @@ class WordAdapter(private val letterId:String, context: Context)
 
 //      setting an explicit intent when a button is clicked
         holder.button.setOnClickListener {
-            val queryUrl:Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}${item}")
+            val queryUrl:Uri = Uri.parse("${WordListFragment.SEARCH_PREFIX}${item}")
             val intent = Intent(Intent.ACTION_SEARCH, queryUrl)
             context.startActivity(intent)
         }
