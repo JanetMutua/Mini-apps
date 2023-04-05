@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
 import android.widget.Button
 import androidx.annotation.RequiresApi
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
@@ -47,13 +48,15 @@ class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>(){
 
 //      creating a setOnClickListener for the button to enable it to move to a different activity
         holder.button.setOnClickListener {
-            val context = holder.view.context
-            val intent = Intent(context, DetailActivity::class.java)
+            val action = LetterListFragmentDirections
+                .actionLetterListFragmentToWordListFragment(
+                    letter = holder.button.text.toString()
+                )
 
-            intent.putExtra(WordListFragment.LETTER, holder.button.text.toString())
-
-            context.startActivity(intent)
+            holder.view.findNavController().navigate(action)
         }
+
+
 
     }
 
