@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">DictionApp</string>
+    <string name="text_meaning">Discover the meaning of:</string>
+</resources>
