@@ -1,5 +1,7 @@
 package com.example.dictionapp
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,5 +33,7 @@ class LetterAdapter: RecyclerView.Adapter<LetterAdapter.LetterViewHolder>() {
     override fun onBindViewHolder(holder: LetterViewHolder, position: Int) {
         val letter = letterList[position]
         holder.button.text = letter.toString()
+
+
     }
 }
