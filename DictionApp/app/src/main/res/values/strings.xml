@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">DictionApp</string>
     <string name="text_meaning">Discover the meaning of:</string>
+    <string name="detail_prefix">Words that start with</string>
+    <string name="action_switch_layout">Switch Layout</string>
+    <string name="look_up_word">Look up word in a Browser Search</string>
+    <string name="look_up_words">Show stored words</string>
 </resources>
