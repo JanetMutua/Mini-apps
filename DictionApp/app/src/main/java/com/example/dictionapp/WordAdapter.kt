@@ -1,11 +1,14 @@
 package com.example.dictionapp
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityNodeInfo
+import android.view.accessibility.AccessibilityNodeInfo.ACTION_CLICK
 import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
@@ -50,12 +53,16 @@ class WordAdapter (private val letterId:String, context: Context): RecyclerView.
         val word = wordList[position]
         val context = holder.view.context
         holder.button.text = word
+        holder.button.setOnClickListener {
+            val searchUri: Uri = Uri.parse("${DetailActivity.SEARCH_PREFIX}$word")
+            val intent = Intent(Intent.ACTION_SEARCH, searchUri)
 
+            context.startActivity(intent)
+        }
     }
 
     companion object Accessibility: View.AccessibilityDelegate()
     {
-
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         override fun onInitializeAccessibilityNodeInfo(host: View, info: AccessibilityNodeInfo)
         {

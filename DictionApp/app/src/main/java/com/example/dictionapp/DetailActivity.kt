@@ -11,9 +11,12 @@ import com.example.dictionapp.databinding.ActivityDetailBinding
 class DetailActivity: AppCompatActivity()
 {
     //defining constants to be used in this class and the LetterAdapter
+    //separates the constants and makes them usable without a particular instance of  class
+    //companion keyword means it is associated with the Detail Activity class
     companion object
     {
-        const val LETTER = "A"
+        const val LETTER = "letter"
+        const val SEARCH_PREFIX = "https://www.google.com/search?q="
     }
 
     lateinit var recyclerView: RecyclerView
@@ -24,19 +27,16 @@ class DetailActivity: AppCompatActivity()
 
         val binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val letterId = intent?.extras?.getString(LETTER).toString()
 
-        //val letterId = "A"
         recyclerView = binding.recyclerView
-
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = WordAdapter(LETTER, this)
-
-
+        recyclerView.adapter = WordAdapter(letterId, this)
         recyclerView.addItemDecoration(
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )
 
-        title = getString(R.string.detail_prefix) + " " + LETTER
+        title = getString(R.string.detail_prefix) + " " + letterId
 
 
 
