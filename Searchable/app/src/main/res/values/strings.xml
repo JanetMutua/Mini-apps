@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Searchable</string>
+    <string name="menu_title">Layout toggle from linear to grid</string>
+</resources>
