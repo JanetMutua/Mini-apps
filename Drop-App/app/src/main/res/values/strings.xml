@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Droppy</string>
     <string name="droppy_here">DROPPY HERE!!</string>
+    <string name="welcome_to_your_drop_app">Welcome to Your Drop App!!</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

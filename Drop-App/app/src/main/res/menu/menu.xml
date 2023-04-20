@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/library"
+        android:title="My Library"
+        android:icon="@drawable/baseline_library_books_24"/>
+
+    <item android:id="@+id/downloads"
+        android:title="Downloads"
+        android:icon="@drawable/baseline_download_24"/>
+
+    <item android:id="@+id/accounts"
+        android:title="My Account"
+        android:icon="@drawable/baseline_supervisor_account_24"/>
+
+
+
+</menu>
