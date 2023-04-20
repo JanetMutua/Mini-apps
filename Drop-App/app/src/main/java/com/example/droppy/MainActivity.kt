@@ -2,6 +2,7 @@ package com.example.droppy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -18,10 +19,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
-
-        //var drawerLayout = R.id.drawerLayout
 
 
         //initializing toggle
@@ -46,6 +43,9 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    //inflating the menu bar on the app bar
+
 
     //enabling toggle action on the app bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

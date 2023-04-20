@@ -4,4 +4,10 @@
     <string name="welcome_to_your_drop_app">Welcome to Your Drop App!!</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="my_library">My Library</string>
+    <string name="downloads">Downloads</string>
+    <string name="my_account">My Account</string>
+    <string name="search_books">Search Books</string>
+    <string name="welcome_to_droppy">Welcome to Droppy!!</string>
+    <string name="drop_down_menu">Drop Down Menu</string>
 </resources>

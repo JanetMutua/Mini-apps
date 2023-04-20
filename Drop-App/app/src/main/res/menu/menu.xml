@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/library"
-        android:title="My Library"
+        android:title="@string/my_library"
         android:icon="@drawable/baseline_library_books_24"/>
 
     <item android:id="@+id/downloads"
-        android:title="Downloads"
+        android:title="@string/downloads"
         android:icon="@drawable/baseline_download_24"/>
 
     <item android:id="@+id/accounts"
-        android:title="My Account"
+        android:title="@string/my_account"
         android:icon="@drawable/baseline_supervisor_account_24"/>
+
+    <item android:id="@+id/search_books"
+        android:title="@string/search_books"
+        android:icon="@drawable/baseline_search_24"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/dropdown_menu"
+        android:title="@string/drop_down_menu"
+        app:showAsAction="collapseActionView"/>
 
 
 
