@@ -10,4 +10,7 @@
     <string name="search_books">Search Books</string>
     <string name="welcome_to_droppy">Welcome to Droppy!!</string>
     <string name="drop_down_menu">Drop Down Menu</string>
+    <string name="messages">Messages</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
 </resources>

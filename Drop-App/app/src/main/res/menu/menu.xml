@@ -14,15 +14,5 @@
         android:title="@string/my_account"
         android:icon="@drawable/baseline_supervisor_account_24"/>
 
-    <item android:id="@+id/search_books"
-        android:title="@string/search_books"
-        android:icon="@drawable/baseline_search_24"
-        app:showAsAction="always"/>
-
-    <item android:id="@+id/dropdown_menu"
-        android:title="@string/drop_down_menu"
-        app:showAsAction="collapseActionView"/>
-
-
 
 </menu>
