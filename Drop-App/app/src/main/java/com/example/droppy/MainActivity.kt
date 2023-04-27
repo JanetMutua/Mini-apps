@@ -6,6 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.fragment.app.Fragment
 import com.example.droppy.databinding.ActivityMainBinding
 
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+//========================Setting up the Navigation drawer=================================================
         //initializing toggle
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)
         //connecting the toggle with the DrawerLayout
@@ -41,12 +43,36 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+//========================================Setting up fragments======================================
+
+        //setting the instances of the three fragments
+        val firstFragment = FirstFragment()
+        val secondFragment = SecondFragment()
+        val thirdFragment = ThirdFragment()
+
+        //setting the current fragment
+        switchFragments(firstFragment)
+
+        //setting an onClickListener for the BottomNavigation
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.imHome -> switchFragments(firstFragment)
+                R.id.imMessages -> switchFragments(secondFragment)
+                R.id.imProfile -> switchFragments(thirdFragment)
+            }
+            //return true but do not include the keyword "return" since it is a lambda expression
+            true
+        }
+
+        //setting the notifications icon on top of messages
+        binding.bottomNavigationView.getOrCreateBadge(R.id.imMessages).apply {
+            number = 25
+            isVisible = true
+        }
 
     }
 
     //inflating the menu bar on the app bar
-
-
     //enabling toggle action on the app bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)){
@@ -54,6 +80,15 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+    //function for switching fragments
+    private fun switchFragments(fragment: Fragment) =
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment, fragment)
+            commit()
+        }
+
 }
 
 
