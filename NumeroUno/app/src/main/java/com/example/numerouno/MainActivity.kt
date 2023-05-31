@@ -3,7 +3,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
-
+import com.example.numerouno.ui.theme.ChangingColoredBox
+import com.example.numerouno.ui.theme.PlayWithColoredBox
 
 
 class MainActivity : ComponentActivity() {
@@ -16,7 +17,10 @@ class MainActivity : ComponentActivity() {
             //ApplyImageCardFunction()
 
             //------------Editing text-------------
-            TextEditCapabilities()
+            //TextEditCapabilities()
+
+            //--------------Applying states changes with a colored box-------------------
+            PlayWithColoredBox()
 
             //==============================end of section=================================
 
