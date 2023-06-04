@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/imHome"
-        android:title="Home"
+        android:title="@string/home"
         android:icon="@drawable/baseline_home"/>
 
     <item android:id="@+id/imSearch"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/baseline_search"/>
 
     <item android:id="@+id/placeholder"
         android:title=""/>
 
     <item android:id="@+id/imProfile"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/baseline_person"/>
 
     <item android:id="@+id/imSettings"
-        android:title="Settings"
+        android:title="@string/settings"
         android:icon="@drawable/baseline_settings"/>
 
 </menu>
