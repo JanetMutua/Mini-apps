@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Little Lemon</string>
+    <string name="chicago">Chicago</string>
+    <string name="login">Login</string>
+    <string name="order">Order</string>
+    <string name="logo_content_description">Little Lemon logo</string>
+    <string name="username_input">Username</string>
+    <string name="password_input">Password</string>
+    <string name="about_little_lemon">We are a family owned chinese and thai cuisine restaurant, focused on delivering you the most delicious meals right at the comfort of your home.</string>
 </resources>
