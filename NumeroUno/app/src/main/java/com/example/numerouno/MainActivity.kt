@@ -7,6 +7,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.numerouno.lessons.ListView
+import com.example.numerouno.lessons.ThisConstraintLayout
 import com.example.numerouno.ui.theme.ChangingColoredBox
 import com.example.numerouno.ui.theme.PlayWithColoredBox
 
@@ -27,7 +28,14 @@ class MainActivity : ComponentActivity() {
             //PlayWithColoredBox()
 
             //----------------Creating buttons, snackbars and edit text in Compose-----------------
-            ListView()
+            //ListView()
+
+            //-----------------Event modifiers--------------------------------
+            //EventModifiersUseCase()
+
+            //-------------------Constraint Layout---------------
+
+            ThisConstraintLayout()
 
             //==============================end of section=================================
 
