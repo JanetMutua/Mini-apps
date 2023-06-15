@@ -1,16 +1,10 @@
 package com.example.littlelemon
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,6 +17,14 @@ import androidx.compose.ui.unit.dp
 fun LoginScreen(
     modifier: Modifier = Modifier
 ){
+    var username by remember {
+        mutableStateOf("")
+    }
+
+    var password by remember {
+        mutableStateOf("")
+    }
+
     Column(
         modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -32,18 +34,22 @@ fun LoginScreen(
         Image(
             painter = painterResource(
                 id = R.drawable.little_lemon_logo),
-            contentDescription = stringResource(id = R.string.logo_content_description) )
-
-        TextField(
-            value = "",
-            onValueChange = {},
-            label = { Text(text = stringResource(id = R.string.username_input)) }
+            contentDescription = stringResource(id = R.string.logo_content_description),
+            Modifier.padding(10.dp)
         )
 
-        TextField(
-            value = "",
-            onValueChange = {},
-            label = { Text(text = stringResource(id = R.string.password_input)) }
+        OutlinedTextField(
+            value = "$username",
+            onValueChange = {username = it},
+            label = { Text(text = stringResource(id = R.string.username_input)) },
+            modifier = Modifier.padding(10.dp)
+        )
+
+        OutlinedTextField(
+            value = "$password",
+            onValueChange = {password = it},
+            label = { Text(text = stringResource(id = R.string.password_input)) },
+            modifier = Modifier.padding(10.dp)
         )
 
         Button(
@@ -52,6 +58,7 @@ fun LoginScreen(
             colors = ButtonDefaults.buttonColors(
                 Color(0xFF495E57)
             ),
+            modifier = Modifier.padding(10.dp),
 
             //this parameter helps add padding to the inner content
             contentPadding = PaddingValues(
