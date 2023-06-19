@@ -64,7 +64,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = "$username",
             onValueChange = onNameChange,
-            label = {TextFieldValue(text = "Username") },
+            label = {Text(text = "Username") },
             modifier = Modifier.padding(10.dp)
         )
 
@@ -72,7 +72,7 @@ fun LoginScreen(
         OutlinedTextField(
             value = "$password",
             onValueChange = onPasswordChange,
-            label = { TextFieldValue(text = "Password") },
+            label = { Text(text = "Password") },
             visualTransformation = PasswordVisualTransformation(),
             modifier = Modifier.padding(10.dp)
         )

@@ -1,13 +1,20 @@
 package com.example.littlelemon
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.ScrollableState
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyItemScope
+import androidx.compose.foundation.lazy.LazyListScope
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -19,13 +26,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.littlelemon.ui.theme.DrawerPanel
 import com.example.littlelemon.ui.theme.LittleLemonTheme
+import com.example.littlelemon.ui.theme.TopAppBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +47,34 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-//                    Column {
-//                        MainScreen()
-//                        LowerPanel()
-//                        OrderItemImplementation()
-//                    }
 
-                    loadLoginScreen()
+                    HomeScreen()
+                    //loadLoginScreen()
                 }
+            }
+        }
+    }
+
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+    @Composable
+    fun HomeScreen(){
+        val scaffoldState = rememberScaffoldState()
+        val scope = rememberCoroutineScope()
+
+        Scaffold (
+            scaffoldState = scaffoldState,
+            drawerContent = { DrawerPanel(scaffoldState = scaffoldState, scope = scope)},
+            topBar = {
+                TopAppBar(scaffoldState = scaffoldState, scope = scope)
+            }
+        ){
+            LazyColumn{
+                this.item {
+                    MainScreen()
+                    LowerPanel()
+                    OrderItemImplementation()
+                }
+
             }
         }
     }
