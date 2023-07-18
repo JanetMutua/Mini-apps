@@ -10,10 +10,10 @@ import androidx.core.content.ContextCompat.startActivity
 class ProductAvailability : AppCompatActivity() {
 
     val products = listOf(
-        Product("Ramen", 20),
-        Product("Chicken Burger", 16),
-        Product("Pizza", 0),
-        Product("Loaded fries", 0)
+        Product("Ramen", 20, 20.0),
+        Product("Chicken Burger", 16, 45.0),
+        Product("Pizza", 4, 30.0),
+        Product("Loaded fries", 5, 12.0)
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,13 +28,19 @@ class ProductAvailability : AppCompatActivity() {
         }
     }
 
-    data class Product(val title:String, val quantity:Int)
+    data class Product(val title:String, val quantity:Int, var price:Double){
+
+        fun applyDiscount(discountPercent: Int){
+            if(quantity > 0 && quantity <= 5){
+                price -= (price * discountPercent/100)
+            }
+        }
+    }
 
     companion object{
 
         fun checkQuantity(context: Context){
             val intent = Intent(context, ProductAvailability::class.java)
-
             context.startActivity(intent)
         }
     }
