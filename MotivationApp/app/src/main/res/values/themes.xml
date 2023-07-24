@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--Base Application Theme-->
+    <style name="Theme.MotivationApp" parent="android:Theme.Material.Light.NoActionBar">
+        <!--Primary brand color-->
+        <item name="android:colorPrimary">@color/deepblue</item>
+
+    </style>
+</resources>

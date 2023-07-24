@@ -1,7 +1,6 @@
 package com.example.littlelemon
 
-import android.content.Context
-import android.widget.Toast
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,18 +9,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-
+import androidx.navigation.NavHostController
 
 
 @Composable
-fun loadLoginScreen(){
+fun LoginScreen(navController: NavHostController) {
     var username by remember{
         mutableStateOf("")
     }
@@ -30,9 +26,7 @@ fun loadLoginScreen(){
         mutableStateOf("")
     }
 
-    LoginScreen(
-        username = username,
-        password = password,
+    LoginScreen(navController, username, password,
         onNameChange = {username = it},
         onPasswordChange = {password = it}
     )
@@ -41,13 +35,14 @@ fun loadLoginScreen(){
 
 @Composable
 fun LoginScreen(
+    navController: NavHostController,
     username:String,
     password:String,
     onNameChange: (String) -> Unit,
     onPasswordChange:(String) -> Unit,
     modifier: Modifier = Modifier
 ){
-    val context = LocalContext.current
+
     Column(
         modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -79,11 +74,12 @@ fun LoginScreen(
 
         Button(
             onClick = {
-                if(username == "Darian" && password == "littlelemon"){
-                    Toast.makeText(context, "Welcome to Little Lemon", Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(context, "Invalid Credentials" + "Please try again", Toast.LENGTH_SHORT).show()
-                }
+                  navController.navigate(Home.route)
+//                if(username == "Darian" && password == "littlelemon"){
+//                    Toast.makeText(context, "Welcome to Little Lemon", Toast.LENGTH_SHORT).show()
+//                }else{
+//                    Toast.makeText(context, "Invalid Credentials" + "Please try again", Toast.LENGTH_SHORT).show()
+//                }
             },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(
@@ -110,8 +106,3 @@ fun LoginScreen(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewLoginScreen(){
-   loadLoginScreen()
-}
