@@ -38,6 +38,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.motivationapp.ui.theme.AquaBlue
 import com.example.motivationapp.ui.theme.BeigeOne
 import com.example.motivationapp.ui.theme.BeigeThree
 import com.example.motivationapp.ui.theme.BeigeTwo
@@ -64,6 +65,7 @@ fun HomeScreen(modifier:Modifier =
                        .fillMaxSize()
                        .background(DeepBlue)
 ){
+
     Column {
         GreetingSection()
         LazyChips(
@@ -74,7 +76,18 @@ fun HomeScreen(modifier:Modifier =
         DailyThought()
         FeatureSection(features = featureList)
 
+        BottomMenu(items = listOf(
+            BottomMenuBarContent("Home", R.drawable.ic_home),
+            BottomMenuBarContent("Meditate", R.drawable.ic_diversity),
+            BottomMenuBarContent("Sleep", R.drawable.ic_nights_stay),
+            BottomMenuBarContent("Music", R.drawable.ic_music_note),
+            BottomMenuBarContent("Profile", R.drawable.ic_person_outline)
+        ))
     }
+
+
+
+
 }
 
 //---------------greeting section---------------
@@ -391,3 +404,85 @@ fun FeatureItem(feature: Feature){
         }
     }
 }
+
+//---------------------------------Bottom navigation menu----------------------
+
+@Composable
+fun BottomMenu(
+    items:List<BottomMenuBarContent>,
+    activeHighlightColor:Color = ButtonBlue,
+    activeTextColor:Color = Color.White,
+    inactiveTextColor:Color = AquaBlue,
+    initialSelectedItem: Int = 0,
+){
+    var selectedItemIndex by remember {
+        mutableStateOf(initialSelectedItem)
+    }
+    
+    Row(
+        horizontalArrangement = Arrangement.SpaceAround,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier =
+        Modifier
+            .fillMaxWidth()
+            .background(DeepBlue)
+            .padding(15.dp)
+    ) {
+        items.forEachIndexed {
+                index,
+                bottomMenuBarContent ->
+            BottomMenuItem(
+                item = bottomMenuBarContent,
+                isSelected = index == selectedItemIndex,
+                activeHighlightColor = activeHighlightColor,
+                inactiveTextColor = inactiveTextColor,
+                activeTextColor = activeTextColor
+            ) {
+                selectedItemIndex = index
+            }
+
+        }
+    }
+}
+
+//individual bottom bar item
+@Composable
+fun BottomMenuItem(
+    item:BottomMenuBarContent,
+    isSelected:Boolean = false,
+    activeHighlightColor:Color = ButtonBlue,
+    activeTextColor:Color = Color.White,
+    inactiveTextColor:Color = AquaBlue,
+    onItemClick:() -> Unit
+){
+    Column (
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.clickable {
+            onItemClick()
+        }
+    ){
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier =
+            Modifier
+                .clip(RoundedCornerShape(10.dp))
+                .background(if (isSelected) activeHighlightColor else Color.Transparent)
+                .padding(10.dp)
+        ){
+            Icon(
+                painter = painterResource(id = item.iconId),
+                tint = if (isSelected) activeTextColor else inactiveTextColor,
+                contentDescription = item.title,
+                modifier = Modifier.size(20.dp)
+            )
+        }
+        Text(
+            text = item.title,
+            color =
+            if (isSelected)activeTextColor else inactiveTextColor,
+            style = MaterialTheme.typography.bodySmall
+        )
+    }
+}
+
