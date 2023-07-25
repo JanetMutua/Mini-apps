@@ -65,25 +65,30 @@ fun HomeScreen(modifier:Modifier =
                        .fillMaxSize()
                        .background(DeepBlue)
 ){
+    Box{
+        Column {
+            GreetingSection()
+            LazyChips(
+                listOf(
+                    "Better sleep", "Mantras", "Gratitude",
+                    "Breathing", "Mobility"
+                ))
+            DailyThought()
+            FeatureSection(features = featureList)
 
-    Column {
-        GreetingSection()
-        LazyChips(
-            listOf(
-                "Better sleep", "Mantras", "Gratitude",
-                "Breathing", "Mobility"
+        }
+        Row(modifier = Modifier.align(Alignment.BottomCenter)){
+            BottomMenu(items = listOf(
+                BottomMenuBarContent("Home", R.drawable.ic_home),
+                BottomMenuBarContent("Meditate", R.drawable.ic_diversity),
+                BottomMenuBarContent("Sleep", R.drawable.ic_nights_stay),
+                BottomMenuBarContent("Music", R.drawable.ic_music_note),
+                BottomMenuBarContent("Profile", R.drawable.ic_person_outline)
             ))
-        DailyThought()
-        FeatureSection(features = featureList)
-
-        BottomMenu(items = listOf(
-            BottomMenuBarContent("Home", R.drawable.ic_home),
-            BottomMenuBarContent("Meditate", R.drawable.ic_diversity),
-            BottomMenuBarContent("Sleep", R.drawable.ic_nights_stay),
-            BottomMenuBarContent("Music", R.drawable.ic_music_note),
-            BottomMenuBarContent("Profile", R.drawable.ic_person_outline)
-        ))
+        }
     }
+
+
 
 
 
@@ -426,7 +431,7 @@ fun BottomMenu(
         Modifier
             .fillMaxWidth()
             .background(DeepBlue)
-            .padding(15.dp)
+            .padding(7.5.dp)
     ) {
         items.forEachIndexed {
                 index,
